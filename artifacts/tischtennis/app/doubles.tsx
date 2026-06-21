@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -164,6 +164,7 @@ export default function DoublesScreen() {
   const colors = useColors();
   const insets = useSafeAreaInsets();
   const router = useRouter();
+  const params = useLocalSearchParams<{ players?: string }>();
   const styles = makeStyles(colors);
 
   // Persistent tournament state
@@ -193,6 +194,26 @@ export default function DoublesScreen() {
       .then(data => { if (data) { setTournament(JSON.parse(data)); setStep('matches'); } })
       .finally(() => setLoading(false));
   }, []);
+
+  // Prefill the player list with the players entered on the main screen.
+  // Carried over as a route param so the doubles draw uses the same roster
+  // instead of forcing the user to re-type everyone.
+  const prefilled = useRef(false);
+  useEffect(() => {
+    if (prefilled.current || !params.players) return;
+    try {
+      const incoming = JSON.parse(params.players) as { name?: string; ttr?: string }[];
+      const cleaned = incoming
+        .filter(p => p?.name?.trim())
+        .map(p => ({ name: p.name!.trim(), ttr: p.ttr ?? '' }));
+      if (cleaned.length > 0) {
+        prefilled.current = true;
+        setDrafts(cleaned);
+      }
+    } catch {
+      // Malformed param — ignore and keep the empty draft rows.
+    }
+  }, [params.players]);
 
   // End-of-tournament save dialog
   useEffect(() => {
@@ -391,7 +412,9 @@ export default function DoublesScreen() {
               <Text style={[styles.countText, { color: setupValid ? '#fff' : colors.mutedForeground }]}>
                 {count < DOUBLES_MIN_PLAYERS
                   ? `${count} Spieler — mind. ${DOUBLES_MIN_PLAYERS} nötig`
-                  : `${count} Spieler → ${pairCount} Doppel${hasTriple ? ' (1 Dreier)' : ''}`}
+                  : !allHaveTTR
+                    ? `${count} Spieler — TTR für alle eintragen`
+                    : `${count} Spieler → ${pairCount} Doppel${hasTriple ? ' (1 Dreier)' : ''}`}
               </Text>
             </View>
 
@@ -676,8 +699,9 @@ export default function DoublesScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top, borderBottomColor: colors.border }]}>
-        <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.headerBack}>
-          <Ionicons name="arrow-back" size={22} color={colors.primary} />
+        <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.headerActionBtn}>
+          <Ionicons name="arrow-back" size={20} color={colors.primary} />
+          <Text style={[styles.headerActionLabel, { color: colors.primary }]}>Zurück</Text>
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
           <Text style={[styles.headerTitle, { color: colors.foreground }]} numberOfLines={1}>
@@ -687,11 +711,13 @@ export default function DoublesScreen() {
             Runde {currentRound} von {totalRounds} · {tournament.pairs.length} Doppel
           </Text>
         </View>
-        <TouchableOpacity onPress={handleExportPdf} activeOpacity={0.7} style={styles.headerBack} disabled={exporting}>
-          <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={22} color={colors.primary} />
+        <TouchableOpacity onPress={handleExportPdf} activeOpacity={0.7} style={styles.headerActionBtn} disabled={exporting}>
+          <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={20} color={colors.primary} />
+          <Text style={[styles.headerActionLabel, { color: colors.primary }]}>PDF</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.headerBack}>
-          <Ionicons name="refresh" size={22} color={colors.mutedForeground} />
+        <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.headerActionBtn}>
+          <Ionicons name="refresh" size={20} color={colors.mutedForeground} />
+          <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Neu</Text>
         </TouchableOpacity>
       </View>
 
@@ -819,6 +845,8 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     // Tournament header
     header: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingBottom: 12, borderBottomWidth: 1 },
     headerBack: { padding: 6 },
+    headerActionBtn: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, paddingVertical: 4, gap: 2 },
+    headerActionLabel: { fontSize: 10, fontFamily: 'Inter_600SemiBold' },
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 1 },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },

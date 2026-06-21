@@ -457,7 +457,10 @@ export default function HomeScreen() {
           {/* Doubles Card */}
           <TouchableOpacity
             style={[styles.modeCard, { backgroundColor: colors.card, borderColor: colors.border }]}
-            onPress={() => router.push('/doubles')}
+            onPress={() => router.push({
+              pathname: '/doubles',
+              params: { players: JSON.stringify(validPlayers) },
+            })}
             activeOpacity={0.85}>
             <View style={[styles.modeIcon, { backgroundColor: '#d1fae5' }]}>
               <Ionicons name="people" size={28} color="#059669" />
@@ -465,7 +468,7 @@ export default function HomeScreen() {
             <View style={{ flex: 1 }}>
               <Text style={[styles.modeCardTitle, { color: colors.foreground }]}>Doppelturnier</Text>
               <Text style={[styles.modeCardDesc, { color: colors.mutedForeground }]}>
-                Jeder gegen Jeden mit wechselnden Doppelpartnern — eigene Spielerliste und Auslosung
+                Jeder gegen Jeden mit wechselnden Doppelpartnern — eingegebene Spieler werden übernommen, Auslosung nach TTR
               </Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color={colors.mutedForeground} />
@@ -857,15 +860,18 @@ export default function HomeScreen() {
           </Text>
           <Text style={[styles.headerSub, { color: colors.mutedForeground }]}>{modeLabel}</Text>
         </View>
-        <View style={{ flexDirection: 'row', gap: 2 }}>
-          <TouchableOpacity onPress={handleExport} activeOpacity={0.7} style={styles.resetBtn} disabled={exporting}>
-            <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={22} color={colors.primary} />
+        <View style={{ flexDirection: 'row', gap: 4 }}>
+          <TouchableOpacity onPress={handleExport} activeOpacity={0.7} style={styles.headerActionBtn} disabled={exporting}>
+            <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={20} color={colors.primary} />
+            <Text style={[styles.headerActionLabel, { color: colors.primary }]}>PDF</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setEditPlayersVisible(true)} activeOpacity={0.7} style={styles.resetBtn}>
-            <Ionicons name="create-outline" size={22} color={colors.mutedForeground} />
+          <TouchableOpacity onPress={() => setEditPlayersVisible(true)} activeOpacity={0.7} style={styles.headerActionBtn}>
+            <Ionicons name="create-outline" size={20} color={colors.mutedForeground} />
+            <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Spieler</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.resetBtn}>
-            <Ionicons name="refresh" size={22} color={colors.mutedForeground} />
+          <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.headerActionBtn}>
+            <Ionicons name="refresh" size={20} color={colors.mutedForeground} />
+            <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Neu</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -998,6 +1004,8 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 2 },
     resetBtn: { padding: 10, marginLeft: 2 },
+    headerActionBtn: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 4, gap: 2 },
+    headerActionLabel: { fontSize: 10, fontFamily: 'Inter_600SemiBold' },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },
     tabBtn: { flex: 1, paddingVertical: 11, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 6 },
     tabBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },

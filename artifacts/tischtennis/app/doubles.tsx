@@ -491,7 +491,10 @@ export default function DoublesScreen() {
 
   // ── STEP: DRAW ───────────────────────────────────────────────────────────────
   if (step === 'draw') {
-    const players = buildPlayers();
+    // Use the players captured at draw time — rebuilding here would mint new IDs
+    // that no longer match the playerIds stored in previewPairs, leaving every
+    // pair card empty.
+    const players = drawnPlayers;
     return (
       <View style={[styles.root, { backgroundColor: colors.background }]}>
         <ScrollView

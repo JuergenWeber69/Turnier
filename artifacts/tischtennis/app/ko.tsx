@@ -187,13 +187,16 @@ export default function KOScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top + webTop, borderBottomColor: colors.border }]}>
-        <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.backBtn}>
-          <Ionicons name="arrow-back" size={24} color={colors.foreground} />
+        <TouchableOpacity
+          onPress={() => router.back()}
+          activeOpacity={0.7}
+          style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+          <Ionicons name="arrow-back" size={16} color={colors.primary} />
+          <Text style={[styles.headerActionLabel, { color: colors.primary }]}>Zurück</Text>
         </TouchableOpacity>
-        <Text style={[styles.headerTitle, { color: colors.foreground }]}>
+        <Text style={[styles.headerTitle, { color: colors.foreground }]} numberOfLines={1}>
           {isSimpleKO ? 'KO-Bracket' : 'KO-Phase'}
         </Text>
-        <View style={{ width: 40 }} />
       </View>
 
       <ScrollView
@@ -368,12 +371,17 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     header: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      gap: 10,
       paddingHorizontal: 16,
       paddingBottom: 14,
       borderBottomWidth: 1,
     },
     backBtn: { padding: 10, marginLeft: -6 },
+    headerActionBtn: {
+      flexDirection: 'row', alignItems: 'center', gap: 5,
+      paddingHorizontal: 10, paddingVertical: 7, borderRadius: 10, borderWidth: 1,
+    },
+    headerActionLabel: { fontSize: 12, fontFamily: 'Inter_600SemiBold' },
     headerTitle: {
       fontSize: 18,
       fontFamily: 'Inter_700Bold',

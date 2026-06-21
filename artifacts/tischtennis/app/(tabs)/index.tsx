@@ -860,18 +860,28 @@ export default function HomeScreen() {
           </Text>
           <Text style={[styles.headerSub, { color: colors.mutedForeground }]}>{modeLabel}</Text>
         </View>
-        <View style={{ flexDirection: 'row', gap: 4 }}>
-          <TouchableOpacity onPress={handleExport} activeOpacity={0.7} style={styles.headerActionBtn} disabled={exporting}>
-            <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={20} color={colors.primary} />
+        <View style={{ flexDirection: 'row', gap: 6 }}>
+          <TouchableOpacity
+            onPress={handleExport}
+            activeOpacity={0.7}
+            style={[styles.headerActionBtn, { borderColor: colors.primary, backgroundColor: colors.accent }]}
+            disabled={exporting}>
+            <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={16} color={colors.primary} />
             <Text style={[styles.headerActionLabel, { color: colors.primary }]}>PDF</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setEditPlayersVisible(true)} activeOpacity={0.7} style={styles.headerActionBtn}>
-            <Ionicons name="create-outline" size={20} color={colors.mutedForeground} />
-            <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Spieler</Text>
+          <TouchableOpacity
+            onPress={() => setEditPlayersVisible(true)}
+            activeOpacity={0.7}
+            style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+            <Ionicons name="create-outline" size={16} color={colors.foreground} />
+            <Text style={[styles.headerActionLabel, { color: colors.foreground }]}>Spieler</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.headerActionBtn}>
-            <Ionicons name="refresh" size={20} color={colors.mutedForeground} />
-            <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Neu</Text>
+          <TouchableOpacity
+            onPress={handleReset}
+            activeOpacity={0.7}
+            style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+            <Ionicons name="refresh" size={16} color={colors.foreground} />
+            <Text style={[styles.headerActionLabel, { color: colors.foreground }]}>Neu</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -1004,8 +1014,11 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 2 },
     resetBtn: { padding: 10, marginLeft: 2 },
-    headerActionBtn: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 4, gap: 2 },
-    headerActionLabel: { fontSize: 10, fontFamily: 'Inter_600SemiBold' },
+    headerActionBtn: {
+      flexDirection: 'row', alignItems: 'center', gap: 5,
+      paddingHorizontal: 10, paddingVertical: 7, borderRadius: 10, borderWidth: 1,
+    },
+    headerActionLabel: { fontSize: 12, fontFamily: 'Inter_600SemiBold' },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },
     tabBtn: { flex: 1, paddingVertical: 11, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 6 },
     tabBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },

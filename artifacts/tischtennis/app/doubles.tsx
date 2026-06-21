@@ -699,8 +699,11 @@ export default function DoublesScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top, borderBottomColor: colors.border }]}>
-        <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.headerActionBtn}>
-          <Ionicons name="arrow-back" size={20} color={colors.primary} />
+        <TouchableOpacity
+          onPress={() => router.back()}
+          activeOpacity={0.7}
+          style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+          <Ionicons name="arrow-back" size={16} color={colors.primary} />
           <Text style={[styles.headerActionLabel, { color: colors.primary }]}>Zurück</Text>
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
@@ -711,13 +714,20 @@ export default function DoublesScreen() {
             Runde {currentRound} von {totalRounds} · {tournament.pairs.length} Doppel
           </Text>
         </View>
-        <TouchableOpacity onPress={handleExportPdf} activeOpacity={0.7} style={styles.headerActionBtn} disabled={exporting}>
-          <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={20} color={colors.primary} />
+        <TouchableOpacity
+          onPress={handleExportPdf}
+          activeOpacity={0.7}
+          style={[styles.headerActionBtn, { borderColor: colors.primary, backgroundColor: colors.accent }]}
+          disabled={exporting}>
+          <Ionicons name={exporting ? 'hourglass-outline' : 'share-outline'} size={16} color={colors.primary} />
           <Text style={[styles.headerActionLabel, { color: colors.primary }]}>PDF</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleReset} activeOpacity={0.7} style={styles.headerActionBtn}>
-          <Ionicons name="refresh" size={20} color={colors.mutedForeground} />
-          <Text style={[styles.headerActionLabel, { color: colors.mutedForeground }]}>Neu</Text>
+        <TouchableOpacity
+          onPress={handleReset}
+          activeOpacity={0.7}
+          style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+          <Ionicons name="refresh" size={16} color={colors.foreground} />
+          <Text style={[styles.headerActionLabel, { color: colors.foreground }]}>Neu</Text>
         </TouchableOpacity>
       </View>
 
@@ -843,10 +853,13 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     infoText: { flex: 1, fontSize: 13, fontFamily: 'Inter_400Regular', lineHeight: 20 },
 
     // Tournament header
-    header: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingBottom: 12, borderBottomWidth: 1 },
+    header: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 16, paddingBottom: 12, borderBottomWidth: 1 },
     headerBack: { padding: 6 },
-    headerActionBtn: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, paddingVertical: 4, gap: 2 },
-    headerActionLabel: { fontSize: 10, fontFamily: 'Inter_600SemiBold' },
+    headerActionBtn: {
+      flexDirection: 'row', alignItems: 'center', gap: 5,
+      paddingHorizontal: 10, paddingVertical: 7, borderRadius: 10, borderWidth: 1,
+    },
+    headerActionLabel: { fontSize: 12, fontFamily: 'Inter_600SemiBold' },
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 1 },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },

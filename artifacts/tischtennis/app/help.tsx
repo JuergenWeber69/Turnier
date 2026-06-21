@@ -127,8 +127,12 @@ export default function HelpScreen() {
     <View style={[styles.root, { backgroundColor: colors.background }]}>
       {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top, borderBottomColor: colors.border }]}>
-        <TouchableOpacity onPress={() => router.back()} activeOpacity={0.7} style={styles.backBtn}>
-          <Ionicons name="arrow-back" size={22} color={colors.primary} />
+        <TouchableOpacity
+          onPress={() => router.back()}
+          activeOpacity={0.7}
+          style={[styles.headerActionBtn, { borderColor: colors.border, backgroundColor: colors.secondary }]}>
+          <Ionicons name="arrow-back" size={16} color={colors.primary} />
+          <Text style={[styles.headerActionLabel, { color: colors.primary }]}>Zurück</Text>
         </TouchableOpacity>
         <View style={{ flex: 1 }}>
           <Text style={[styles.headerTitle, { color: colors.foreground }]}>Anleitung</Text>
@@ -204,6 +208,11 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       borderBottomWidth: 1,
     },
     backBtn: { padding: 8 },
+    headerActionBtn: {
+      flexDirection: 'row', alignItems: 'center', gap: 5,
+      paddingHorizontal: 10, paddingVertical: 7, borderRadius: 10, borderWidth: 1,
+    },
+    headerActionLabel: { fontSize: 12, fontFamily: 'Inter_600SemiBold' },
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 1 },
     intro: {

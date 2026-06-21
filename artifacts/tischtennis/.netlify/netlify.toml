@@ -7,10 +7,10 @@ headers = []
 [functions."*"]
 
 [build]
-publish = "/opt/build/repo/dist"
+publish = "/opt/build/repo/artifacts/tischtennis/dist"
 publishOrigin = "config"
 commandOrigin = "config"
-command = "pnpm --filter @workspace/tischtennis run build:web"
+command = "pnpm install && pnpm --filter @workspace/tischtennis run build:web"
 
 [build.environment]
 NODE_VERSION = "22"

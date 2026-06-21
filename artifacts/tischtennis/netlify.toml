@@ -1,14 +1,11 @@
 # Builds the Tischtennis tournament app (Expo Router / React Native Web) and
 # serves the static web export as a single-page app.
 #
-# The pnpm workspace and its lockfile live at the repository root, and the build
-# runs from there. Netlify's automatic dependency install does not find a
-# lockfile next to this config, so it skips installing and the `expo` CLI is
-# missing. Install the workspace explicitly before exporting the web build.
-#
-# Paths below resolve relative to the repository root (the build's working
-# directory), so the publish directory must point at the export output inside
-# this package.
+# When Netlify deploys with a package path of artifacts/tischtennis it reads
+# this config, but the build still runs from the repository root, so relative
+# paths resolve against the repo root (not this directory). The web export is
+# written to artifacts/tischtennis/dist, so the publish path must spell out
+# that location from the root. Keep this in sync with the root netlify.toml.
 [build]
   command = "pnpm install && pnpm --filter @workspace/tischtennis run build:web"
   publish = "artifacts/tischtennis/dist"

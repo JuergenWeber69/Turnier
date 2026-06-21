@@ -1,3 +1,7 @@
+// Side-effect import: declares self-hosted @font-face rules on web before the
+// UI renders, so icons and text fonts resolve reliably in the static export.
+import "@/constants/loadWebFonts";
+
 import {
   Inter_400Regular,
   Inter_500Medium,

@@ -34,11 +34,12 @@ minimumReleaseAgeExclude:
   - '@replit/*'
   - stripe-replit-sync
 
+# Only the deployable web app is part of the workspace. Netlify's CLI deploys
+# from the repository root without a --filter flag, so a multi-package workspace
+# would make it abort with "Projects detected". Keeping a single package lets it
+# auto-select the app. The shared catalog/overrides below still apply.
 packages:
-  - artifacts/*
-  - lib/*
-  - lib/integrations/*
-  - scripts
+  - artifacts/tischtennis
 
 catalog:
   '@replit/vite-plugin-cartographer': ^0.5.21

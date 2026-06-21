@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "Tischtennis Turnier"
+version = "1.0.0"
+id = "artifacts/tischtennis"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 20456
+
+[services.development]
+run = "pnpm --filter @workspace/tischtennis run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tischtennis", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/tischtennis", "run", "serve" ]
+
+[services.env]
+PORT = "20456"
+BASE_PATH = "/"

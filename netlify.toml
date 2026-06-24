@@ -1,0 +1,24 @@
+# Builds the Tischtennis tournament app (Expo Router / React Native Web) and
+# serves the static web export as a single-page app.
+#
+# This file lives at the repository root because the Netlify site has no base
+# directory configured, so Netlify only reads the build configuration from
+# here. A config placed inside artifacts/tischtennis would be ignored, which
+# left the deploy with an empty publish directory and a 404 "Page not found".
+#
+# The pnpm workspace and its lockfile are at the repository root, so the build
+# runs from there. Install the workspace explicitly (Netlify's automatic
+# install does not pick up the workspace reliably), then export the web build.
+# The publish path points at the export output inside the app package.
+[build]
+  command = "pnpm install && pnpm --filter @workspace/tischtennis run build:web"
+  publish = "artifacts/tischtennis/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Client-side routing: every path falls back to the SPA entry point.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

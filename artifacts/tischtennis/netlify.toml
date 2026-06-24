@@ -1,0 +1,20 @@
+# Builds the Tischtennis tournament app (Expo Router / React Native Web) and
+# serves the static web export as a single-page app.
+#
+# When Netlify deploys with a package path of artifacts/tischtennis it reads
+# this config, but the build still runs from the repository root, so relative
+# paths resolve against the repo root (not this directory). The web export is
+# written to artifacts/tischtennis/dist, so the publish path must spell out
+# that location from the root. Keep this in sync with the root netlify.toml.
+[build]
+  command = "pnpm install && pnpm --filter @workspace/tischtennis run build:web"
+  publish = "artifacts/tischtennis/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Client-side routing: every path falls back to the SPA entry point.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

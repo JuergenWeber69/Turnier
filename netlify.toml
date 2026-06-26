@@ -1,0 +1,14 @@
+[build]
+  command = "pnpm install --frozen-lockfile && pnpm --filter @workspace/tischtennis build"
+  publish = "artifacts/tischtennis/static-build/web"
+  functions = "netlify/functions"
+
+[dev]
+  command = "pnpm --filter @workspace/tischtennis run dev"
+  targetPort = 20456
+  publish = "artifacts/tischtennis/static-build/web"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

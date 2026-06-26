@@ -16,9 +16,11 @@ import colors from "@/constants/colors";
  */
 export function useColors() {
   const scheme = useColorScheme();
+  type Palette = typeof colors.light;
+  const palettes = colors as unknown as Record<string, Palette>;
   const palette =
     scheme === "dark" && "dark" in colors
-      ? (colors as Record<string, typeof colors.light>).dark
+      ? palettes.dark
       : colors.light;
   return { ...palette, radius: colors.radius };
 }

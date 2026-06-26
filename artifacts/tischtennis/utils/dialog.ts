@@ -1,11 +1,6 @@
 import { Alert, Platform } from 'react-native';
 
-/**
- * Cross-platform confirmation dialog.
- * React Native's Alert.alert with buttons does NOT work on react-native-web,
- * so on web we fall back to window.confirm.
- */
-export function confirmDialog(opts: {
+export type AppDialogOptions = {
   title: string;
   message?: string;
   confirmText?: string;
@@ -13,7 +8,20 @@ export function confirmDialog(opts: {
   destructive?: boolean;
   onConfirm: () => void;
   onCancel?: () => void;
-}): void {
+};
+
+let appDialogHandler: ((opts: AppDialogOptions) => void) | null = null;
+
+export function setAppDialogHandler(handler: ((opts: AppDialogOptions) => void) | null): void {
+  appDialogHandler = handler;
+}
+
+/**
+ * Cross-platform confirmation dialog.
+ * On web, the app-level dialog keeps custom button labels instead of
+ * browser-default OK/Cancel text.
+ */
+export function confirmDialog(opts: AppDialogOptions): void {
   const {
     title,
     message = '',
@@ -25,6 +33,10 @@ export function confirmDialog(opts: {
   } = opts;
 
   if (Platform.OS === 'web') {
+    if (appDialogHandler) {
+      appDialogHandler({ title, message, confirmText, cancelText, destructive, onConfirm, onCancel });
+      return;
+    }
     const text = message ? `${title}\n\n${message}` : title;
     const ok = typeof window !== 'undefined' ? window.confirm(text) : false;
     if (ok) onConfirm();
@@ -41,6 +53,15 @@ export function confirmDialog(opts: {
 /** Cross-platform notification (single OK button). */
 export function notify(title: string, message?: string): void {
   if (Platform.OS === 'web') {
+    if (appDialogHandler) {
+      appDialogHandler({
+        title,
+        message,
+        confirmText: 'OK',
+        onConfirm: () => {},
+      });
+      return;
+    }
     const text = message ? `${title}\n\n${message}` : title;
     if (typeof window !== 'undefined') window.alert(text);
     return;

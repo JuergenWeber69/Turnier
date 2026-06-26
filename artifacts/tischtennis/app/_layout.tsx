@@ -13,6 +13,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { AppDialogHost } from "@/components/AppDialogHost";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { TournamentProvider } from "@/context/TournamentContext";
 import { useColors } from "@/hooks/useColors";
@@ -66,6 +67,7 @@ export default function RootLayout() {
             <KeyboardProvider>
               <TournamentProvider>
                 <RootLayoutNav />
+                <AppDialogHost />
               </TournamentProvider>
             </KeyboardProvider>
           </GestureHandlerRootView>

@@ -67,8 +67,20 @@ function getDeploymentDomain() {
     return stripProtocol(process.env.EXPO_PUBLIC_DOMAIN);
   }
 
+  if (process.env.DEPLOY_PRIME_URL) {
+    return stripProtocol(process.env.DEPLOY_PRIME_URL);
+  }
+
+  if (process.env.DEPLOY_URL) {
+    return stripProtocol(process.env.DEPLOY_URL);
+  }
+
+  if (process.env.URL) {
+    return stripProtocol(process.env.URL);
+  }
+
   console.error(
-    "ERROR: No deployment domain found. Set REPLIT_INTERNAL_APP_DOMAIN, REPLIT_DEV_DOMAIN, or EXPO_PUBLIC_DOMAIN",
+    "ERROR: No deployment domain found. Set REPLIT_INTERNAL_APP_DOMAIN, REPLIT_DEV_DOMAIN, EXPO_PUBLIC_DOMAIN, DEPLOY_PRIME_URL, DEPLOY_URL, or URL",
   );
   process.exit(1);
 }

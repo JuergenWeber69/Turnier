@@ -63,8 +63,8 @@ const SECTIONS: Section[] = [
     title: 'Doppelturnier',
     steps: [
       { label: 'Eigene Spielerliste', detail: 'Das Doppelturnier hat eine separate Spielerliste. Die Spieler aus dem Einzel-Turnier werden nicht übernommen.' },
-      { label: 'Zufällige Auslosung', detail: 'Die App lost die Doppelpaare automatisch aus. Mit „Neu auslosen" kann die Auslosung wiederholt werden, bis das Ergebnis passt.' },
-      { label: 'Feste Doppel', detail: 'Die Doppelpaare werden nur zu Beginn ausgelost und bleiben danach für das gesamte Turnier gleich.' },
+      { label: 'Einmalige Auslosung', detail: 'Die App lost die Doppelpaare vor dem Start automatisch aus. Mit „Neu auslosen" kann diese Start-Auslosung wiederholt werden, bis das Ergebnis passt.' },
+      { label: 'Feste Doppel', detail: 'Nach dem Start bleiben die Doppelpaare für das gesamte Turnier gleich. Beim Starten der nächsten Runde werden keine neuen Doppelpaarungen ausgelost.' },
       { label: 'Dreier-Doppel', detail: 'Bei ungerader Spielerzahl gibt es ein Dreier-Doppel. Wer von den dreien gerade nicht dran ist, wird angezeigt.' },
     ],
   },

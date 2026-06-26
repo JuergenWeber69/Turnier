@@ -545,8 +545,15 @@ export default function DoublesScreen() {
           {/* Redraw hint */}
           <TouchableOpacity style={styles.redrawBtn} onPress={handleRedraw} activeOpacity={0.7}>
             <Ionicons name="shuffle" size={16} color={colors.mutedForeground} />
-            <Text style={[styles.redrawText, { color: colors.mutedForeground }]}>Neu auslosen</Text>
+            <Text style={[styles.redrawText, { color: colors.mutedForeground }]}>Start-Auslosung neu machen</Text>
           </TouchableOpacity>
+
+          <View style={[styles.infoBox, { backgroundColor: colors.secondary, borderColor: colors.border }]}>
+            <Ionicons name="lock-closed" size={18} color={colors.primary} />
+            <Text style={[styles.infoText, { color: colors.mutedForeground }]}>
+              Diese Doppel bleiben nach dem Turnierstart fest. Neue Runden losen keine neuen Paarungen aus.
+            </Text>
+          </View>
 
           {hasTriple && (
             <View style={[styles.infoBox, { backgroundColor: colors.secondary, borderColor: colors.border }]}>

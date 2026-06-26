@@ -193,9 +193,11 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       fontSize: 14, fontFamily: 'Inter_700Bold', textAlign: 'center',
     },
     saveBtn: {
+      width: '100%', alignSelf: 'stretch',
       minHeight: 54, borderRadius: 12, paddingVertical: 15, paddingHorizontal: 16,
       flexDirection: 'row', alignItems: 'center',
       justifyContent: 'center', gap: 8, marginBottom: 2,
+      borderWidth: 1, borderColor: 'transparent', overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
     },
     saveBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },

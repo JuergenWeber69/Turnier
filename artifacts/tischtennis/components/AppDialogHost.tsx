@@ -115,12 +115,14 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     },
     button: {
       flex: 1,
+      flexBasis: 0,
       minHeight: 50,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 12,
       borderWidth: 1,
+      overflow: 'hidden',
     },
     secondaryButton: {
       backgroundColor: 'transparent',

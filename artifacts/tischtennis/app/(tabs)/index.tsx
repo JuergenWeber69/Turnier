@@ -962,15 +962,18 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     },
     addBtn: {
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-      minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6,
+      flexBasis: 0, minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6,
+      overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
     },
     addBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },
     warnText: { fontSize: 13, fontFamily: 'Inter_400Regular', textAlign: 'center', marginTop: 10 },
     bottomBar: { position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: 16, paddingTop: 10 },
     primaryBtn: {
+      width: '100%', alignSelf: 'stretch',
       minHeight: 54, borderRadius: 12, borderWidth: 1, borderColor: 'transparent', paddingVertical: 15, paddingHorizontal: 16,
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+      overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
     },
     primaryBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold', color: '#fff' },
@@ -1001,7 +1004,7 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 2 },
     resetBtn: {
       width: 42, height: 42, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginLeft: 4,
-      backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border,
+      backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, overflow: 'hidden',
     },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },
     tabBtn: { flex: 1, paddingVertical: 11, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 6 },

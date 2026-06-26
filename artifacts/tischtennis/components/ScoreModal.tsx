@@ -131,12 +131,15 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4,
     },
     pickBtn: {
-      minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+      width: '100%', minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+      borderWidth: 1, borderColor: colors.border, overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
     },
     pickBtnText: { fontSize: 22, fontFamily: 'Inter_700Bold' },
     saveBtn: {
-      minHeight: 54, borderRadius: 12, paddingVertical: 15, width: '100%', alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+      width: '100%', alignSelf: 'stretch', minHeight: 54, borderRadius: 12, paddingVertical: 15, paddingHorizontal: 16,
+      alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+      borderWidth: 1, borderColor: 'transparent', overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
     },
     saveBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },

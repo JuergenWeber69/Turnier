@@ -98,7 +98,7 @@ function DoublesScoreModal({
                 return (
                   <TouchableOpacity
                     key={`${s1}:${s2}`}
-                    style={[mss.pickBtn, { backgroundColor: isSelected ? colors.primary : colors.secondary }]}
+                    style={[mss.pickBtn, { backgroundColor: isSelected ? colors.primary : colors.secondary, borderColor: colors.border }]}
                     onPress={() => { setSel([s1, s2]); Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                     activeOpacity={0.8}>
                     <Text style={[mss.pickBtnText, { color: isSelected ? '#fff' : colors.foreground }]}>{s1}:{s2}</Text>
@@ -116,7 +116,7 @@ function DoublesScoreModal({
                 return (
                   <TouchableOpacity
                     key={`${s1}:${s2}`}
-                    style={[mss.pickBtn, { backgroundColor: isSelected ? colors.primary : colors.secondary }]}
+                    style={[mss.pickBtn, { backgroundColor: isSelected ? colors.primary : colors.secondary, borderColor: colors.border }]}
                     onPress={() => { setSel([s1, s2]); Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                     activeOpacity={0.8}>
                     <Text style={[mss.pickBtnText, { color: isSelected ? '#fff' : colors.foreground }]}>{s1}:{s2}</Text>
@@ -154,12 +154,15 @@ const mss = StyleSheet.create({
   divider: { width: 1, marginHorizontal: 10, marginTop: 24, alignSelf: 'stretch' },
   colLabel: { fontSize: 11, fontFamily: 'Inter_600SemiBold', textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 },
   pickBtn: {
-    minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+    width: '100%', minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+    borderWidth: 1, overflow: 'hidden',
     shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
   },
   pickBtnText: { fontSize: 22, fontFamily: 'Inter_700Bold' },
   saveBtn: {
-    minHeight: 54, borderRadius: 12, paddingVertical: 15, width: '100%', alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+    width: '100%', alignSelf: 'stretch', minHeight: 54, borderRadius: 12, paddingVertical: 15, paddingHorizontal: 16,
+    alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+    borderWidth: 1, borderColor: 'transparent', overflow: 'hidden',
     shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
   },
   saveBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold', color: '#fff' },
@@ -808,14 +811,17 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     suggestPillText: { fontSize: 13, fontFamily: 'Inter_500Medium' },
     addBtn: {
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-      minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6, marginTop: 8,
+      width: '100%', minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6, marginTop: 8,
+      overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
     },
     addBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },
     bottomBar: { position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: 16, paddingTop: 10 },
     primaryBtn: {
+      width: '100%', alignSelf: 'stretch',
       minHeight: 54, borderRadius: 12, borderWidth: 1, borderColor: 'transparent', paddingVertical: 15, paddingHorizontal: 16,
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+      overflow: 'hidden',
       shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
     },
     primaryBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },
@@ -840,7 +846,7 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     header: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingBottom: 12, borderBottomWidth: 1 },
     headerBack: {
       width: 42, height: 42, borderRadius: 12, alignItems: 'center', justifyContent: 'center',
-      backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border,
+      backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border, overflow: 'hidden',
     },
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 1 },

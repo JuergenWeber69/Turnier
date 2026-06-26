@@ -153,9 +153,15 @@ const mss = StyleSheet.create({
   gridCol: { flex: 1, gap: 8 },
   divider: { width: 1, marginHorizontal: 10, marginTop: 24, alignSelf: 'stretch' },
   colLabel: { fontSize: 11, fontFamily: 'Inter_600SemiBold', textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 },
-  pickBtn: { borderRadius: 12, paddingVertical: 16, alignItems: 'center' },
+  pickBtn: {
+    minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+    shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
+  },
   pickBtnText: { fontSize: 22, fontFamily: 'Inter_700Bold' },
-  saveBtn: { borderRadius: 14, paddingVertical: 16, width: '100%', alignItems: 'center', marginBottom: 4 },
+  saveBtn: {
+    minHeight: 54, borderRadius: 12, paddingVertical: 15, width: '100%', alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+    shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
+  },
   saveBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold', color: '#fff' },
   cancelBtn: { paddingVertical: 14, width: '100%', alignItems: 'center' },
   cancelBtnText: { fontSize: 15, fontFamily: 'Inter_500Medium' },
@@ -800,10 +806,18 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     suggestRow: { marginBottom: 6, marginTop: -2 },
     suggestPill: { borderRadius: 20, borderWidth: 1, paddingHorizontal: 12, paddingVertical: 6 },
     suggestPillText: { fontSize: 13, fontFamily: 'Inter_500Medium' },
-    addBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRadius: 12, borderWidth: 1.5, paddingVertical: 14, gap: 6, marginTop: 8 },
+    addBtn: {
+      flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+      minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6, marginTop: 8,
+      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
+    },
     addBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },
     bottomBar: { position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: 16, paddingTop: 10 },
-    primaryBtn: { borderRadius: 14, paddingVertical: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
+    primaryBtn: {
+      minHeight: 54, borderRadius: 12, borderWidth: 1, borderColor: 'transparent', paddingVertical: 15, paddingHorizontal: 16,
+      flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
+    },
     primaryBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },
 
     // Draw
@@ -824,7 +838,10 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
 
     // Tournament header
     header: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingBottom: 12, borderBottomWidth: 1 },
-    headerBack: { padding: 6 },
+    headerBack: {
+      width: 42, height: 42, borderRadius: 12, alignItems: 'center', justifyContent: 'center',
+      backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border,
+    },
     headerTitle: { fontSize: 17, fontFamily: 'Inter_700Bold' },
     headerSub: { fontSize: 12, fontFamily: 'Inter_400Regular', marginTop: 1 },
     tabBar: { flexDirection: 'row', borderBottomWidth: 1 },

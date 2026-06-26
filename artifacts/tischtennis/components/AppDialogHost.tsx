@@ -115,8 +115,8 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     },
     button: {
       flex: 1,
-      minHeight: 48,
-      borderRadius: 14,
+      minHeight: 50,
+      borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 12,
@@ -127,6 +127,11 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     },
     primaryButton: {
       borderColor: 'transparent',
+      shadowColor: '#0f172a',
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.12,
+      shadowRadius: 8,
+      elevation: 3,
     },
     secondaryText: {
       fontSize: 15,

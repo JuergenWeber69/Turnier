@@ -130,9 +130,15 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       fontSize: 11, fontFamily: 'Inter_600SemiBold',
       textAlign: 'center', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4,
     },
-    pickBtn: { borderRadius: 12, paddingVertical: 16, alignItems: 'center' },
+    pickBtn: {
+      minHeight: 56, borderRadius: 12, paddingVertical: 15, alignItems: 'center', justifyContent: 'center',
+      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
+    },
     pickBtnText: { fontSize: 22, fontFamily: 'Inter_700Bold' },
-    saveBtn: { borderRadius: 14, paddingVertical: 16, width: '100%', alignItems: 'center', marginBottom: 4 },
+    saveBtn: {
+      minHeight: 54, borderRadius: 12, paddingVertical: 15, width: '100%', alignItems: 'center', justifyContent: 'center', marginBottom: 4,
+      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
+    },
     saveBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },
     cancelBtn: { paddingVertical: 14, width: '100%', alignItems: 'center' },
     cancelBtnText: { fontSize: 15, fontFamily: 'Inter_500Medium' },

@@ -220,9 +220,10 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       fontSize: 14, fontFamily: 'Inter_700Bold',
     },
     importBtn: {
-      borderRadius: 14, paddingVertical: 15,
+      minHeight: 54, borderRadius: 12, paddingVertical: 15, paddingHorizontal: 16,
       flexDirection: 'row', alignItems: 'center',
       justifyContent: 'center', gap: 8, marginBottom: 2,
+      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
     },
     importBtnText: {
       fontSize: 16, fontFamily: 'Inter_600SemiBold',

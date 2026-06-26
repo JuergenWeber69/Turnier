@@ -1,0 +1,47 @@
+redirectsOrigin = "config"
+plugins = []
+functionsDirectory = "/opt/build/repo/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
+headers = []
+
+[dev]
+command = "pnpm --filter @workspace/tischtennis run dev"
+targetPort = 20456.0
+publish = "artifacts/tischtennis/static-build/web"
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/opt/build/repo/artifacts/tischtennis/static-build/web"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "pnpm install --frozen-lockfile && pnpm --filter @workspace/tischtennis build"
+functions = "/opt/build/repo/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

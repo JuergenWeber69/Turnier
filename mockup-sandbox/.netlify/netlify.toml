@@ -1,0 +1,35 @@
+plugins = []
+functionsDirectory = "/opt/build/repo/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
+headers = []
+redirects = []
+
+[dev]
+command = "pnpm --filter @workspace/mockup-sandbox dev"
+targetPort = 5173.0
+publish = "mockup-sandbox/dist"
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/opt/build/repo/mockup-sandbox/dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "pnpm --filter @workspace/mockup-sandbox build"
+functions = "/opt/build/repo/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

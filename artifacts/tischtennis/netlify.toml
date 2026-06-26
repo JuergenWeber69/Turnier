@@ -1,0 +1,3 @@
+[build]
+command = "pnpm --dir artifacts/tischtennis run build"
+publish = "artifacts/tischtennis/static-build/web"

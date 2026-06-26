@@ -1,0 +1,4 @@
+[build]
+base = "artifacts/tischtennis"
+command = "pnpm run build"
+publish = "static-build/web"

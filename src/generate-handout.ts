@@ -207,7 +207,7 @@ tableHeader([
   ['Jeder gegen Jeden', '17–24', '3 Gruppen → Viertelfinale → Halbfinale → Finale.'],
   ['Schweizer System', 'mind. 8', '6 Runden, kein Ausscheiden. Paarung nach Punkten.'],
   ['Einfaches KO', '5–24', 'Direktes Ausscheiden. Bracket sofort sichtbar.'],
-  ['Doppelturnier', '5–24', 'Jeder gegen Jeden mit wechselnden Partnern.'],
+  ['Doppelturnier', '5–24', 'Jeder gegen Jeden mit festen Doppelpartnern.'],
 ] as string[][]).forEach(row => tableRow(row, mW));
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -250,7 +250,7 @@ kv('17–24 Spieler', 'Beste 32 (32er-Bracket).');
 
 sp(4);
 subTitle('Doppelturnier');
-body('Jeder Spieler tritt mit wechselnden Partnern gegen alle anderen Doppel an. Getrennte Spielerliste; Auslosung versucht, dass jeder einmal mit jedem anderen zusammenspielt.');
+body('Die Doppelpaare werden zu Beginn einmal ausgelost und bleiben für das gesamte Turnier gleich. Anschließend spielen die Doppel im Jeder-gegen-Jeden-Modus gegeneinander.');
 
 // ════════════════════════════════════════════════════════════════════════════
 // PAGE 3 — SCHRITT 3 & 4

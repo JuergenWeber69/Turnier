@@ -811,20 +811,20 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
     suggestPillText: { fontSize: 13, fontFamily: 'Inter_500Medium' },
     addBtn: {
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-      width: '100%', minHeight: 50, borderRadius: 12, borderWidth: 1.5, paddingVertical: 13, paddingHorizontal: 12, gap: 6, marginTop: 8,
+      width: '100%', minHeight: 58, borderRadius: 16, borderWidth: 1.5, paddingVertical: 15, paddingHorizontal: 14, gap: 8, marginTop: 10,
       overflow: 'hidden',
-      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 5, elevation: 2,
+      shadowColor: '#020617', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.12, shadowRadius: 6, elevation: 2,
     },
-    addBtnText: { fontSize: 14, fontFamily: 'Inter_600SemiBold' },
+    addBtnText: { fontSize: 16, fontFamily: 'Inter_700Bold' },
     bottomBar: { position: 'absolute', bottom: 0, left: 0, right: 0, paddingHorizontal: 16, paddingTop: 10 },
     primaryBtn: {
       width: '100%', alignSelf: 'stretch',
-      minHeight: 54, borderRadius: 12, borderWidth: 1, borderColor: 'transparent', paddingVertical: 15, paddingHorizontal: 16,
+      minHeight: 58, borderRadius: 16, borderWidth: 1, borderColor: 'transparent', paddingVertical: 16, paddingHorizontal: 16,
       flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
       overflow: 'hidden',
-      shadowColor: '#0f172a', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.12, shadowRadius: 8, elevation: 3,
+      shadowColor: '#020617', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.16, shadowRadius: 8, elevation: 3,
     },
-    primaryBtnText: { fontSize: 16, fontFamily: 'Inter_600SemiBold' },
+    primaryBtnText: { fontSize: 18, fontFamily: 'Inter_700Bold' },
 
     // Draw
     drawTitle: { fontSize: 22, fontFamily: 'Inter_700Bold', marginBottom: 4 },

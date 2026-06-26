@@ -44,7 +44,9 @@ export function AppDialogHost() {
   return (
     <Modal transparent animationType="fade" visible onRequestClose={handleCancel}>
       <Pressable style={styles.overlay} onPress={handleCancel}>
-        <Pressable style={[styles.card, { paddingBottom: insets.bottom + 20 }]}>
+        <Pressable
+          style={[styles.card, { paddingBottom: insets.bottom + 20 }]}
+          onPress={(event) => event.stopPropagation()}>
           <Text style={[styles.title, { color: colors.foreground }]}>{dialog.title}</Text>
           {dialog.message ? (
             <Text style={[styles.message, { color: colors.mutedForeground }]}>{dialog.message}</Text>
@@ -118,12 +120,14 @@ function makeStyles(colors: ReturnType<typeof useColors>) {
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 12,
+      borderWidth: 1,
     },
     secondaryButton: {
-      borderWidth: 1,
       backgroundColor: 'transparent',
     },
-    primaryButton: {},
+    primaryButton: {
+      borderColor: 'transparent',
+    },
     secondaryText: {
       fontSize: 15,
       fontFamily: 'Inter_600SemiBold',

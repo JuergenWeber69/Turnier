@@ -69,7 +69,9 @@ export function ScoreModal({ match, tournament, onClose, onSave }: ScoreModalPro
   return (
     <Modal transparent animationType="slide" visible={!!match} onRequestClose={onClose}>
       <Pressable style={styles.overlay} onPress={onClose}>
-        <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 20 }]}>
+        <Pressable
+          style={[styles.sheet, { paddingBottom: insets.bottom + 20 }]}
+          onPress={(event) => event.stopPropagation()}>
           <View style={styles.handle} />
           <Text style={[styles.title, { color: colors.foreground }]}>Ergebnis eintragen</Text>
           <Text style={[styles.subtitle, { color: colors.mutedForeground }]}>3 Gewinnsätze</Text>

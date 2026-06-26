@@ -81,7 +81,9 @@ function DoublesScoreModal({
   return (
     <Modal transparent animationType="slide" visible={!!match} onRequestClose={onClose}>
       <Pressable style={mss.overlay} onPress={onClose}>
-        <Pressable style={[mss.sheet, { backgroundColor: colors.card, paddingBottom: insets.bottom + 20 }]}>
+        <Pressable
+          style={[mss.sheet, { backgroundColor: colors.card, paddingBottom: insets.bottom + 20 }]}
+          onPress={(event) => event.stopPropagation()}>
           <View style={[mss.handle, { backgroundColor: colors.border }]} />
           <Text style={[mss.modalTitle, { color: colors.foreground }]}>Ergebnis eintragen</Text>
           <Text style={[mss.modalSub, { color: colors.mutedForeground }]}>3 Gewinnsätze</Text>

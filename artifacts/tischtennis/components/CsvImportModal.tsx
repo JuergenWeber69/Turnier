@@ -77,7 +77,9 @@ export function CsvImportModal({ visible, onClose, onImport }: Props) {
   return (
     <Modal transparent animationType="slide" visible={visible} onRequestClose={handleClose}>
       <Pressable style={styles.overlay} onPress={handleClose}>
-        <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]}>
+        <Pressable
+          style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]}
+          onPress={(event) => event.stopPropagation()}>
           <View style={styles.handle} />
 
           <View style={styles.titleRow}>

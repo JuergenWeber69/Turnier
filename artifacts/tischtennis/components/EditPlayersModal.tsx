@@ -73,7 +73,9 @@ export function EditPlayersModal({ visible, players, onClose, onSave }: Props) {
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <Pressable style={styles.overlay} onPress={onClose}>
-          <Pressable style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]}>
+          <Pressable
+            style={[styles.sheet, { paddingBottom: insets.bottom + 16 }]}
+            onPress={(event) => event.stopPropagation()}>
             <View style={styles.handle} />
 
             <View style={styles.titleRow}>
